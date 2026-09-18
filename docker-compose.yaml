@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  frontend:
+    image: c11_khovatchung_fe:1.2.2
+    container_name: c11_khovatchung_fe
+    ports:
+      - "80:80"
+    volumes:
+      - ./appConfig.js:/usr/share/nginx/html/appConfig.js
+    restart: always
+
+  backend:
+    image: c11_khovatchung_be:1.2.2
+    container_name: c11_khovatchung_be
+    ports:
+      - "8088:8088"
+    env_file:
+      - ./app.env
+    restart: always
